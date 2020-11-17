@@ -2,6 +2,8 @@
 
 This is the only fully functional in-browser media player. The other two popular ones, VLC Media Player and Windows Media Player, require downloads. And then there are bunch of Javascript Media Players for MP4 but that's basically it. For FLV files, the best library "flv.js" is not fully functional. It fails on half the FLV files I tested it on.
 
+Here's a link to a functioning demo of [Media Player playing various videos](https://bestmediaplayer.org/).
+
 # Wanna help out? Couple big TODO items still left #
 
 This project has the potential to be BIGGER than VLC Media Player. But VLC Media Player has a ton of features. I need your help to build out this open source project. Help contribute code!
