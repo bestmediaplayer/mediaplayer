@@ -4,6 +4,10 @@ This is the only fully functional in-browser media player. The other two popular
 
 Here's a link to a functioning demo of [Media Player playing various videos](https://bestmediaplayer.org/).
 
+Here's our email if you wanna reach out: contact@bestmediaplayer.org
+
+Here's our twitter if you wanna follow us for updates and articles about media player: [Media Player Twitter](https://twitter.com/MediaPlayer13).
+
 # Wanna help out? Couple big TODO items still left #
 
 This project has the potential to be BIGGER than VLC Media Player. But VLC Media Player has a ton of features. I need your help to build out this open source project. Help contribute code!
