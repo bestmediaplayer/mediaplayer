@@ -1,0 +1,170 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Free Open Source No-Download HTML5 Media Player for Video, Music, Audio, Android, iPhone, AVI, FLAC, FLV, GIF, M4A, MKV, MOV, MP3, MP4, MPG, OGG, SWF, VOB, WAV, WEBM, WMV">
+<link rel="canonical" href="https://ultimatemediaplayer.net/" />
+<link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="img/favicon-16x16.png" sizes="16x16">
+<title>Free Open Source No-Download HTML5 Media Player for Video, Music, Audio, Android, iPhone, AVI, FLAC, FLV, GIF, M4A, MKV, MOV, MP3, MP4, MPG, OGG, SWF, VOB, WAV, WEBM, WMV</title>
+
+<main id="app">
+<a class="github-fork-ribbon"
+  href="https://github.com/bestmediaplayer/mediaplayer"
+  data-ribbon="Fork me on GitHub" title="Fork me on GitHub">
+  Fork me on GitHub</a>
+
+<h1>Free Open Source No-Download HTML5 Media Player for Video, Music, Audio, Android, iPhone, AVI, FLAC, FLV, GIF, M4A, MKV, MOV, MP3, MP4, MPG, OGG, SWF, VOB, WAV, WEBM, WMV</h1>
+
+<p>
+  This is the only fully functional in-browser media player. The other two popular ones, VLC Media Player and Windows Media Player, require downloads. And then there are bunch of Javascript Media Players for MP4 but that's basically it. For FLV files, the best library "flv.js" is not fully functional. It fails on half the FLV files I tested it on.
+</p>
+
+<section>
+  <button @click="openuploaddialog">
+    <label for="uploadfile" @click="noop">Open File From Computer</label>
+  </button>
+  <input style="display:none" type="file" id="uploader" @change="uploadvid" />
+</section>
+
+<p>
+  Or try playing any one of these test files:
+</p>
+<section>
+  <button @click="download('avi')">AVI</button>&nbsp;
+  <button @click="download('flac')">FLAC</button>&nbsp;
+  <button @click="download('flv')">FLV</button>&nbsp;
+  <button @click="download('gif')">GIF</button>&nbsp;
+  <button @click="download('m4a')">M4A</button>&nbsp;
+  <button @click="download('mkv')">MKV</button>&nbsp;
+  <button @click="download('mov')">MOV</button>&nbsp;
+  <button @click="download('mp3')">MP3</button>&nbsp;
+  <button @click="download('mp4')">MP4</button>&nbsp;
+  <button @click="download('mpg')">MPG</button>&nbsp;
+  <button @click="download('ogg')">OGG</button>&nbsp;
+  <button @click="download('swf')">SWF</button>&nbsp;
+  <button @click="download('vob')">VOB</button>&nbsp;
+  <button @click="download('wav')">WAV</button>&nbsp;
+  <button @click="download('webm')">WEBM</button>&nbsp;
+  <button @click="download('wmv')">WMV</button>&nbsp;
+</section>
+
+<p v-if="loadingapp">
+  Downloading app (8 MB)...
+  <span role="status" class="spinner-border" v-if="loadingapp">
+    <span class="sr-only"></span>
+  </span>
+</p>
+
+<section>
+  <p>{{status}}</p>
+</section>
+
+<section>
+  <p>
+    <video width="400" controls id="aa">
+      Your browser does not support HTML video.
+    </video>
+  </p>
+</section>
+
+<h2>Wanna help on a open source project? Couple big TODO items still left</h2>
+<p>
+  This project has the potential to be BIGGER than VLC Media Player. But VLC Media Player has a ton of features. I need your help to build out this open source project by contributing features to
+  <a href="https://github.com/bestmediaplayer/mediaplayer">
+    Video Media Player github repo</a>
+</p>
+<ul>
+
+  <li><b>Separate out media player into a standalone app that can be embedded into a Vue or React app.</b></li>
+  <p>
+  It's relatively simple but I wanted to gauge reaction to this project before I do this time consuming task.
+  </p>
+
+  <li><b>Use a modern looking UI like video.js</b></li>
+  <p>
+  This is a relatively simple task and is probably the precursor to the next task that is much more difficult.
+  </p>
+
+  <li><b>Implement seeking to any point in the file instead of only streaming from start.</b></li>
+  <p>
+  This is a difficult task requiring two things: 1) a good UI to capture seeking information from a click, and 2) break up a single FFMPEG command into multiple chunks.
+  </p>
+
+  <li><b>Recycle FFMPEG instances more efficiently.</b></li>
+  <p>
+    Right now, to allow the user to play multiple files in the same browser instance, this app creates another FFMPEG instance, because there is no way to kill or pause the previous FFMPEG instance that is transcoding the whole file.
+  </p>
+
+  <li><b>Investigate how to make FFMPEG encoding faster</b></li>
+  <p>
+    WebAssembly does not allow access to special CPU hardware instructions that could've significantly speed up the transcoding process. As a result, while FFMPEG on the desktop is usually very quick, FFMPEG in WebAssembly sometimes struggles to keep up.
+  </p>
+
+</ul>
+
+<h2>Another cool project using FFMPEG:
+  <a href="https://fileconverter.digital/">Free Online File Converter</a></h2>
+<p>
+This file converter leverages the power of running FFMPEG in the browser by shifting file conversion workload from the server to the browser. These incumbent services like Zamzar will soon be made obsolete by in-browser FFMPEG converting files. The legacy services can't compete because they are limited. They only allow a limited number of conversions in a 24 hour time period, and they also limit the size of file that you can upload. If you want anything beyond that, you need to pay $9/month, which is crazy expensive. Some people are on such a tight budget, they don't have $9 to spare like that.
+</p>
+
+<p>
+The unique advantage that file conversion services like FileConverter.digital have over downloading FFMPEG is that there are actually some people in the world that can't do that...because the only thing they have is a phone, not a desktop computer. In many areas of the world, people get a phone before they get a computer. For these people, these powerful in-browser apps are a godsend. It allows them to perform file conversion services that would've been much more difficult before since they only have something like an Android phone.
+</p>
+
+<p>
+Perhaps the biggest drawback of the FileConverter.digital service is the large file size download of around 8 MB. At that size, it's not practical to download the app over mobile data in many parts of the world. It would be both too expensive as well as too slow. On the other hand, the user does not have to upload his file to a server and then download that file again. If the user's file size is larger than 4MB, then in terms of bandwidth cost, this FileConverter.digital app is actually a win for them.
+</p>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+</main>
+
+<script async data-uid="0b8701ae31" src="https://fierce-author-3160.ck.page/0b8701ae31/index.js"></script>
+<script async data-uid="4042598a18" src="https://fierce-author-3160.ck.page/4042598a18/index.js"></script>
+
+    <!-- CSS for spinner. -->
+    <style>
+      @-webkit-keyframes spinner-border { to { transform: rotate(360deg) } }
+      @keyframes spinner-border { to { transform: rotate(360deg) } }
+      .spinner-border {
+        display: inline-block;
+        width: 2rem;
+        height: 2rem;
+        vertical-align: text-bottom;
+        border: .25em solid currentColor;
+        border-right-color: transparent;
+        border-radius: 50%;
+        -webkit-animation: spinner-border .75s linear infinite;
+        animation: spinner-border .75s linear infinite;
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0,0,0,0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
+
+<link href="thirdparty/mvp.css" rel="stylesheet">
+<script src="thirdparty/mux.min.js"></script>
+<script src="thirdparty/ffmpeg.min.js"></script>
+<script src="thirdparty/vue.min.js"></script>
+<script src="app.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-25460549-27', 'auto');
+  ga('send', 'pageview');
+</script>
